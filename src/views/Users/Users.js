@@ -10,7 +10,7 @@ import { useFetchData } from "../../hooks";
 import { parseDataToObject } from "../../utils";
 
 const Users = () => {
-  const { data, loading, error } = useFetchData(`${urlApi}/user`);
+  const { data, loading, error } = useFetchData(`${urlApi}/users`);
   const errorMessage = error && parseDataToObject(error).message;
 
   useEffect(() => {
