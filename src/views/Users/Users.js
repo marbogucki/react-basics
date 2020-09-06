@@ -1,34 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Users.scss";
-import axios from "axios";
 import { urlApi } from "../../config/api";
 import Heading from "../../components/Heading/Heading";
 import Section from "../../components/Section/Section";
 import UserItem from "./UserItem/UserItem";
 import Loading from "../../components/Loading/Loading";
 import ErrorList from "../../components/ErrorList/ErrorList";
+import { useFetchData } from "../../hooks";
+import { parseDataToObject } from "../../utils";
 
 const Users = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(undefined);
-  const [usersList, setUsersList] = useState([]);
+  const { data, loading, error } = useFetchData(`${urlApi}/user`);
+  const errorMessage = error && parseDataToObject(error).message;
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(`${urlApi}/users`);
-        setUsersList(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-      }
-    };
-    fetchUsers();
-
     // PROMISE WITHOUT ASYNC/AWAIT
     // setLoading(true);
     // axios
@@ -50,9 +35,9 @@ const Users = () => {
       {loading ? (
         <Loading />
       ) : (
-        (error && <ErrorList message={error} />) || (
+        (error && <ErrorList message={errorMessage} />) || (
           <ul className="users-item-list">
-            {usersList.map((user) => (
+            {data.map((user) => (
               <UserItem key={user.id} user={user} />
             ))}
           </ul>
