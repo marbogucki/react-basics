@@ -6,7 +6,7 @@ import { getArticles, getLoading, getError } from "./store/selectors";
 import Section from "../../components/Section/Section";
 import Heading from "../../components/Heading/Heading";
 import Loading from "../../components/Loading/Loading";
-import ArticleItem from "./ArticlesList/ArticlesList";
+import ArticleItem from "./ArticleItem/ArticleItem";
 import ErrorList from "../../components/ErrorList/ErrorList";
 
 class Articles extends Component {
