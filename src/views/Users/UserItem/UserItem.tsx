@@ -1,7 +1,8 @@
 import React from "react";
 import "./UserItem.scss";
+import { User } from "../models/User";
 
-const UserItem = ({
+const UserItem: React.FC<{ user: User }> = ({
   user: {
     name,
     email,

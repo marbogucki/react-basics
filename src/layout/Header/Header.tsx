@@ -1,7 +1,11 @@
 import React from "react";
 import Navigation from "../Navigation/Navigation";
 
-const Header = ({ heading }) => (
+type HeaderProps = {
+  heading: string;
+};
+
+const Header = ({ heading }: HeaderProps) => (
   <header>
     <h4>{heading}</h4>
     <Navigation />

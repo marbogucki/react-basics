@@ -1,31 +1,35 @@
-import {
-  FETCH_ARTICLES_PENDING,
-  FETCH_ARTICLES_SUCCESS,
-  FETCH_ARTICLES_ERROR,
-} from "./types";
+import { FetchArticles, ArticlesState } from "./types";
 
-const articlesInitialState = {
+type ArticlesAction = {
+  type: FetchArticles;
+  payload: ArticlesState;
+};
+
+const articlesInitialState: ArticlesState = {
   articles: [],
   loading: false,
   error: undefined,
 };
 
-const articleReducer = (state = articlesInitialState, { type, payload }) => {
+const articleReducer = (
+  state: ArticlesState = articlesInitialState,
+  { type, payload }: ArticlesAction
+): ArticlesState => {
   switch (type) {
-    case FETCH_ARTICLES_PENDING:
+    case FetchArticles.PENDING:
       return {
         ...state,
         loading: true,
       };
 
-    case FETCH_ARTICLES_SUCCESS:
+    case FetchArticles.SUCCESS:
       return {
         ...state,
         loading: false,
         articles: payload.articles,
       };
 
-    case FETCH_ARTICLES_ERROR:
+    case FetchArticles.ERROR:
       return {
         ...state,
         loading: false,

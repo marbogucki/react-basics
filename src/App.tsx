@@ -4,14 +4,12 @@ import AppLayout from "./layout";
 import { Provider } from "react-redux";
 import store from "./store";
 
-function App() {
-  return (
-    <Router>
-      <Provider store={store}>
-        <AppLayout />
-      </Provider>
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <Provider store={store}>
+      <AppLayout />
+    </Provider>
+  </Router>
+);
 
 export default App;

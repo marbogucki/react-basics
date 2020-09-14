@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
-import AppRouting from "../config/AppRouting";
 import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
 import Main from "./Main/Main";
+import AppRouting from "../config/AppRouting";
+import Footer from "./Footer/Footer";
 
 const AppLayout = () => (
   <Fragment>
-    <Header heading="Basic example app" />
+    <Header heading="title" />
     <Main>
       <AppRouting />
     </Main>

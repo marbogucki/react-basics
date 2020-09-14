@@ -1,28 +1,25 @@
-import {
-  FETCH_ARTICLES_PENDING,
-  FETCH_ARTICLES_SUCCESS,
-  FETCH_ARTICLES_ERROR,
-} from "./types";
+import { FetchArticles, ArticlesError } from "./types";
 import axios from "axios";
 import { urlApi } from "../../../config/api";
+import { Article } from "../models/Article";
 
 const fetchArticlesPending = () => ({
-  type: FETCH_ARTICLES_PENDING,
+  type: FetchArticles.PENDING,
 });
 
-const fetchArticlesSuccess = (articles) => {
+const fetchArticlesSuccess = (articles: Article[]) => {
   return {
-    type: FETCH_ARTICLES_SUCCESS,
+    type: FetchArticles.SUCCESS,
     payload: { articles },
   };
 };
 
-const fetchArticlesError = (error) => ({
-  type: FETCH_ARTICLES_ERROR,
+const fetchArticlesError = (error: ArticlesError) => ({
+  type: FetchArticles.ERROR,
   payload: { error },
 });
 
-export const fetchArticles = () => (dispatch) => {
+export const fetchArticles = () => (dispatch: Function) => {
   dispatch(fetchArticlesPending());
 
   setTimeout(() => {

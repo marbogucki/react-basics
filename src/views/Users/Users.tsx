@@ -8,10 +8,12 @@ import Loading from "../../components/Loading/Loading";
 import ErrorList from "../../components/ErrorList/ErrorList";
 import { useFetchData } from "../../hooks";
 import { parseDataToObject } from "../../utils";
+import { UserApi } from "./models/User";
 
 const Users = () => {
-  const { data, loading, error } = useFetchData(`${urlApi}/users`);
-  const errorMessage = error && parseDataToObject(error).message;
+  const { data, loading, error } = useFetchData<UserApi[]>(`${urlApi}/users`);
+  const errorMessage: string | undefined =
+    error && (parseDataToObject(error) as { message: string }).message;
 
   useEffect(() => {
     // PROMISE WITHOUT ASYNC/AWAIT
@@ -37,9 +39,10 @@ const Users = () => {
       ) : (
         (error && <ErrorList message={errorMessage} />) || (
           <ul className="users-item-list">
-            {data.map((user) => (
-              <UserItem key={user.id} user={user} />
-            ))}
+            {data &&
+              data.map((user: UserApi) => (
+                <UserItem key={user.id} user={user} />
+              ))}
           </ul>
         )
       )}

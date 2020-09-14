@@ -4,7 +4,13 @@ import Users from "../views/Users/Users";
 import Articles from "../views/Articles/Articles";
 import Home from "../views/Home/Home";
 
-const routes = [
+type Routes = {
+  path: string;
+  component: any;
+  exact: boolean;
+};
+
+const routes: Routes[] = [
   {
     path: "/",
     component: Home,
