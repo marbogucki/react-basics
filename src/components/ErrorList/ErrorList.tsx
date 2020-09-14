@@ -1,12 +1,12 @@
 import React from "react";
-import "./ErrorList.scss";
+import ErrorListStyled from "./ErrorList.styled";
 
-type ErrorListProps = {
+export type ErrorListProps = {
   message: string | undefined;
 };
 
 const ErrorList = ({ message }: ErrorListProps) => (
-  <div className="error-list">{message}</div>
+  <ErrorListStyled className="error-list">{message}</ErrorListStyled>
 );
 
 export default ErrorList;
