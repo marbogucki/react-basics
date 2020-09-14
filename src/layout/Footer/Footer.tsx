@@ -1,12 +1,12 @@
 import React from "react";
-import "./Footer.scss";
+import FooterStyled from "./Footer.styled";
 
 type FooterProps = {
   info: string;
 };
 
 const Footer = ({ info }: FooterProps) => (
-  <footer className="app-footer">{info}</footer>
+  <FooterStyled className="app-footer">{info}</FooterStyled>
 );
 
 export default Footer;
